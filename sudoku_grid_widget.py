@@ -25,6 +25,7 @@ class SudokuGridWidget(QWidget):
                 self.layout.addWidget(cell, i, j)
                 self.cells.append(cell)
 
+
     def resizeEvent(self, event):
         side = min(self.width(), self.height())
         self.resize(side, side)
@@ -52,6 +53,13 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(main_widget)
         # self.setFixedSize(self.sudoku_widget.size())
 
+        # 设置初始窗口大小
+        screen_smaller_side = min(
+            self.screen().size().width(), self.screen().size().height()
+        )
+        height = screen_smaller_side * 0.6
+        width = screen_smaller_side * 0.8
+        self.resize(width, height)
 
 if __name__ == "__main__":
     from PySide6.QtWidgets import QApplication
