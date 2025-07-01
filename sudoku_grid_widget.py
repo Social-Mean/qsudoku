@@ -5,16 +5,19 @@ from sudoku_cell import SudokuCell
 class SudokuGridWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.layout = QVBoxLayout()
+        self.layout = QGridLayout()
         self.setLayout(self.layout)
         self.cells = []
+
+        # 设置网格间距为0，让单元格紧贴
+        self.layout.setSpacing(0)
+        self.layout.setContentsMargins(0, 0, 0, 0)
+
         for i in range(9):
-            row = QGridLayout()
             for j in range(9):
                 cell = SudokuCell()
-                row.addWidget(cell, i, j)
+                self.layout.addWidget(cell, i, j)
                 self.cells.append(cell)
-            self.layout.addLayout(row)
 
 
 if __name__ == "__main__":

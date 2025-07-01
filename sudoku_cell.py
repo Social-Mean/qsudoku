@@ -6,6 +6,11 @@ class SudokuCell(QWidget):
         super().__init__(parent)
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
+
+        # 设置布局边距为0，让单元格紧贴
+        self.layout.setContentsMargins(0, 0, 0, 0)
+        self.layout.setSpacing(0)
+
         self.line_edit = QLineEdit()
         self.line_edit.setFixedSize(30, 30)
         self.layout.addWidget(self.line_edit)
