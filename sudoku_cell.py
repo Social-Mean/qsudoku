@@ -22,6 +22,7 @@ class SudokuCell(QWidget):
         return self.width()
 
     def _draw_border(self, painter: QPainter, rect: QRect):
+        # TODO 后续移动到 SudokuGridWidget 中
         pen = QPen(Qt.black, 2)
         painter.setPen(pen)
         painter.drawRect(rect)
