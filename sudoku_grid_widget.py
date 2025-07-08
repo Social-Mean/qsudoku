@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QWidget, QGridLayout
-from PySide6.QtGui import QPainter, QPen
+from PySide6.QtGui import QPainter, QPen, QBrush
 from PySide6.QtCore import Qt
 from sudoku_cell import SudokuCell
 
@@ -29,8 +29,12 @@ class SudokuGridWidget(QWidget):
 
     def paintEvent(self, event):
         painter = QPainter(self)
+        self._draw_box_background(painter)
         self._draw_grid(painter)
         super().paintEvent(event)
+
+    def _draw_box_background(self, painter: QPainter):
+        pass
 
     def _draw_grid(self, painter: QPainter):
         pen = QPen(Qt.black, 2)
