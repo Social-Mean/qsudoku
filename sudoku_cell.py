@@ -43,24 +43,19 @@ class SudokuCell(QWidget):
             return
         if event.key() == Qt.Key_Backspace or event.key() == Qt.Key_Delete:
             self.set_number(0)
-        elif event.key() == Qt.Key_1:
-            self.set_number(1)
-        elif event.key() == Qt.Key_2:
-            self.set_number(2)
-        elif event.key() == Qt.Key_3:
-            self.set_number(3)
-        elif event.key() == Qt.Key_4:
-            self.set_number(4)
-        elif event.key() == Qt.Key_5:
-            self.set_number(5)
-        elif event.key() == Qt.Key_6:
-            self.set_number(6)
-        elif event.key() == Qt.Key_7:
-            self.set_number(7)
-        elif event.key() == Qt.Key_8:
-            self.set_number(8)
-        elif event.key() == Qt.Key_9:
-            self.set_number(9)
+        elif event.key() in [
+            Qt.Key_1,
+            Qt.Key_2,
+            Qt.Key_3,
+            Qt.Key_4,
+            Qt.Key_5,
+            Qt.Key_6,
+            Qt.Key_7,
+            Qt.Key_8,
+            Qt.Key_9,
+        ]:
+            number = event.key() - Qt.Key_0
+            self.set_number(number)
 
     def set_editable(self, editable: bool):
         self.editable = editable
