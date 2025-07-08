@@ -1,4 +1,6 @@
 from PySide6.QtWidgets import QWidget, QGridLayout
+from PySide6.QtGui import QPainter, QPen
+from PySide6.QtCore import QRect, Qt
 from sudoku_cell import SudokuCell
 
 
@@ -23,3 +25,37 @@ class SudokuGridWidget(QWidget):
         side = min(self.width(), self.height())
         self.resize(side, side)
         super().resizeEvent(event)
+
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        self._draw_grid(painter)
+        super().paintEvent(event)
+
+    def _draw_grid(self, painter: QPainter):
+        pen = QPen(Qt.black, 2)
+        painter.setPen(pen)
+        # 画外边框
+        rect = self.rect()
+        painter.drawRect(rect.adjusted(0, 0, -1, -1))
+
+        cell_size = self.width() // 9
+
+        # 画粗线（3x3宫格）
+        thick_pen = QPen(Qt.black, 3)
+        painter.setPen(thick_pen)
+        for i in range(10):
+            if i % 3 == 0:
+                # 竖线
+                painter.drawLine(i * cell_size, 0, i * cell_size, self.height())
+                # 横线
+                painter.drawLine(0, i * cell_size, self.width(), i * cell_size)
+
+        # 画细线（单元格）
+        thin_pen = QPen(Qt.black, 1)
+        painter.setPen(thin_pen)
+        for i in range(10):
+            if i % 3 != 0:
+                # 竖线
+                painter.drawLine(i * cell_size, 0, i * cell_size, self.height())
+                # 横线
+                painter.drawLine(0, i * cell_size, self.width(), i * cell_size)
