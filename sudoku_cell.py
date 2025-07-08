@@ -41,7 +41,7 @@ class SudokuCell(QWidget):
     def keyPressEvent(self, event):
         if not self.editable:
             return
-        if event.key() == Qt.Key_Backspace or event.key() == Qt.Key_Delete:
+        if event.key() in [Qt.Key_Backspace, Qt.Key_Delete, Qt.Key_0]:
             self.set_number(0)
         elif event.key() in [
             Qt.Key_1,
