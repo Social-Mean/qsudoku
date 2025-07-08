@@ -1,11 +1,9 @@
-from sudoku import Sudoku
+from mainwindow import MainWindow
 
-# Initializes a Sudoku puzzle with 3 x 3 sub-grid and
-# generates a puzzle with half of the cells empty
-puzzle = Sudoku(3).difficulty(0.5)
-puzzle.show()
+if __name__ == "__main__":
+    from PySide6.QtWidgets import QApplication
 
-solution = puzzle.solve()
-solution.show()
-
-print(solution.board)
+    app = QApplication([])
+    window = MainWindow()
+    window.show()
+    app.exec()
