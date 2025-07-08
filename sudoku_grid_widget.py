@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QWidget, QGridLayout
 from PySide6.QtGui import QPainter, QPen
-from PySide6.QtCore import QRect, Qt
+from PySide6.QtCore import Qt
 from sudoku_cell import SudokuCell
 
 

@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QWidget, QSizePolicy
-from PySide6.QtGui import QPainter, QPen, QFont
+from PySide6.QtGui import QPainter, QFont
 from PySide6.QtCore import QRect, Qt
 
 
