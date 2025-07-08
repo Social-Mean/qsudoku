@@ -69,6 +69,8 @@ class SudokuGridWidget(QWidget):
         for i in range(9):
             for j in range(9):
                 self.cells[i * 9 + j].set_number(board[i][j])
+                if board[i][j] != 0:
+                    self.cells[i * 9 + j].set_editable(False)
 
     def get_board(self) -> list[list[int]]:
         board = []
