@@ -7,14 +7,15 @@ from sudoku_cell import SudokuCell
 class SudokuGridWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.cells = []
+        self._insert_cells()
+
+    def _insert_cells(self):
         self.layout = QGridLayout()
         self.setLayout(self.layout)
-        self.cells = []
-
         # 设置网格间距为0，让单元格紧贴
         self.layout.setSpacing(0)
         self.layout.setContentsMargins(0, 0, 0, 0)
-
         for i in range(9):
             for j in range(9):
                 cell = SudokuCell()
@@ -59,3 +60,16 @@ class SudokuGridWidget(QWidget):
                 painter.drawLine(i * cell_size, 0, i * cell_size, self.height())
                 # 横线
                 painter.drawLine(0, i * cell_size, self.width(), i * cell_size)
+
+    def set_board(self, board: list[list[int]]):
+        for i in range(9):
+            for j in range(9):
+                self.cells[i * 9 + j].set_number(board[i][j])
+
+    def get_board(self) -> list[list[int]]:
+        board = []
+        for i in range(9):
+            board.append([])
+            for j in range(9):
+                board[i].append(self.cells[i * 9 + j].get_number())
+        return board

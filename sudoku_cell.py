@@ -10,7 +10,7 @@ class SudokuCell(QWidget):
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.setMinimumSize(30, 30)
 
-        self.number = 1
+        self.number = 0
 
     def paintEvent(self, event):
         painter = QPainter(self)
