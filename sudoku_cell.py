@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QSizePolicy
+from PySide6.QtWidgets import QWidget, QSizePolicy
 
 
 class SudokuCell(QWidget):
